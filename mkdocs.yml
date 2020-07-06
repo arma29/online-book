@@ -1,0 +1,9 @@
+site_name: Online Book
+nav: 
+  - Home: index.md
+  - Aulas: classes.md
+  - Notebooks: notebooks.md
+  - About: about.md
+theme:
+  name: null
+  custom_dir: 'cinder'
