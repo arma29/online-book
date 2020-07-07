@@ -2,56 +2,69 @@
 
 Feito com [MkDocs](https://www.mkdocs.org/#mkdocs)
 
-### Instalação
+## Instalação
 
-Pode ser feita utilizando algum package manager, buscando pelo pacote `MkDocs`. Caso não encontre uma versão recente, a instalação pode ser feita via `pip`.
+### Instalando o Python e o PIP
 
-Verifique se já possui Python no seu sistema, bem como o gerenciador pip:
+O Python e PIP já vem instalado em algumas distribuições Linux, então antes de proseguir, verifique se já possui no seu sistema.
 
-```bash
+```console
 $ python --version
-
 Python 3.8.2
+```
 
+```console
 $ pip --version
-
 pip 20.0.2 from /usr/local/lib/python3.8/site-packages/pip (python 3.8)
 ```
 
-**Como dito pelo próprio site, MkDocs tem suporte para as seguintes versões do Python: 3.5,3.6,3.7,3.8 e pypy3.**
+**Observação:** Como dito na própria [documentação](https://www.mkdocs.org/#manual-installation), o MkDocs tem suporte para as seguintes versões do Python: 3.5, 3.6, 3.7, 3.8 e PyPy3.
 
-### Instalando MkDocs - pip
+Para instalar em distribuições derivadas do *debian*, utilize o comando abaixo
 
 ```bash
+sudo apt update
+sudo apt install -y python3 python3-pip
+```
+
+Caso você possua um sistema operacional diferente, os links abaixo possuem tutoriais para a maior parte dos sistemas operacionais.
+
+* Python [[Clique aqui](https://realpython.com/installing-python/)]
+
+* Pip [[Clique aqui](https://pip.pypa.io/en/stable/installing/)]
+
+
+### Instalando o MkDocs
+
+Vale ressaltar que em alguns sistemas operacionais é possível instalar o MkDocs diretamente pelo *package manager*. Nesse tutorial vamos utilizar o `pip`, 
+
+```properties
 pip install mkdocs
 ```
 
-Verifique se foi instalado corretamente com o comando:
+A seguir, verifique se o pacote foi instalado corretamente.
 
-```bash
+```console
 $ mkdocs --version
-
 mkdocs, version 0.15.3
 ```
 
-### Manutenção
+## Execução
 
 O MkDocs vem com um *dev-server* nativo, que permite visualizar a documentação a medida que você vai trabalhando nela. Uma vez estando no mesmo diretório do arquivo `mkdocs.yml`, inicie o server executando o seguinte comando:
 
-```bash
+```console
 $ mkdocs serve
-
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory
 [I 160402 15:50:43 server:271] Serving on http://127.0.0.1:8000
 [I 160402 15:50:43 handlers:58] Start watching changes
 [I 160402 15:50:43 handlers:60] Start detecting changes
-
 ```
 
 Basta abrir a url `http://127.0.0.1:8000/` em seu browser.
 
-#### Menu
+### Menu
 
 A estrutura de menus pode ser configurada a partir do arquivo `mkdocs.yml`.
 
@@ -68,10 +81,10 @@ nav:
 
 Com a configuração acima, nós temos 3 itens no *top level*: `Home`, `User Guide` e `About`. `Home` é um link para a homepage do site. Sob a seção `User Guide`, duas páginas são listadas. Por fim, na seção `About` mais duas páginas são listadas.
 
-#### Adicionando conteúdo
+### Adicionando conteúdo
 
 Para adicionar um vídeo do youtube, basta copiar o código do vídeo, fornecido pelo próprio youtube e adicionar em uma página .md. As dimensões podem ser configuaradas facilmente.
 
-```html
-<iframe width="600" height="400" src="https://www.youtube.com/embed/4dFVU-fTMkM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```markdown
+[!embed](https://www.youtube.com/watch?v=xIGre_E2_og =100x20)
 ```
