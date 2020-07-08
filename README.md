@@ -1,6 +1,16 @@
 # Livro Online - Testes
 
-Feito com [MkDocs](https://www.mkdocs.org/#mkdocs)
+Esse material foi desenvolvido utilizando a ferramenta de geração de página estáticas [MkDocs](https://www.mkdocs.org/#mkdocs). Essa ferramenta utiliza arquivos fonte no formato Markdown, mas existem extensões que possibilitam ler o formato Jupyter Notebook (.*ipynb*). A configuração dos plugins, páginas, menus entre outros é feita através de um arquivo YAML. 
+
+- [Livro Online - Testes](#livro-online---testes)
+  - [Instalação](#instalação)
+    - [Instalando o Python e o PIP](#instalando-o-python-e-o-pip)
+    - [Instalando o MkDocs](#instalando-o-mkdocs)
+  - [Execução](#execução)
+  - [Desenvolvimento](#desenvolvimento)
+    - [Menu](#menu)
+    - [Adicionando conteúdo](#adicionando-conteúdo)
+
 
 ## Instalação
 
@@ -63,6 +73,8 @@ INFO    -  Cleaning site directory
 ```
 
 Basta abrir a url `http://127.0.0.1:8000/` em seu browser.
+
+## Desenvolvimento
 
 ### Menu
 
