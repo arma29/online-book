@@ -4,9 +4,7 @@ nav:
   - Notebook: notebooks/hello-world.ipynb 
   - Binder: https://mybinder.org/v2/gh/binder-examples/demo-julia/master?filepath=demo.ipynb
   - Aulas: 
-    - Selenium: 
-      - Ruby: aula.md
-      - Python: aula.md
+    - Selenium: aula.md
     - Randoop: aula.md
   
 theme:
