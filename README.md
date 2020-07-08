@@ -1,6 +1,6 @@
 # Livro Online - Testes
 
-Esse material foi desenvolvido utilizando a ferramenta de geração de página estáticas [MkDocs](https://www.mkdocs.org/#mkdocs). Essa ferramenta utiliza arquivos fonte no formato Markdown, mas existem extensões que possibilitam ler o formato Jupyter Notebook (.*ipynb*). A configuração dos plugins, páginas, menus entre outros é feita através de um arquivo YAML. 
+Esse material foi desenvolvido utilizando a ferramenta de geração de página estáticas [MkDocs](https://www.mkdocs.org/#mkdocs). Essa ferramenta utiliza arquivos fonte no formato Markdown (*.md*), mas existem extensões que possibilitam ler o formato Jupyter Notebook (.*ipynb*). A configuração dos plugins, páginas, menus entre outros é feita através de um arquivo YAML. 
 
 - [Livro Online - Testes](#livro-online---testes)
   - [Instalação](#instalação)
@@ -10,6 +10,7 @@ Esse material foi desenvolvido utilizando a ferramenta de geração de página e
   - [Desenvolvimento](#desenvolvimento)
     - [Menu](#menu)
     - [Adicionando conteúdo](#adicionando-conteúdo)
+  - [Deploy](#deploy)
 
 
 ## Instalação
@@ -40,15 +41,13 @@ sudo apt install -y python3 python3-pip
 Caso você possua um sistema operacional diferente, os links abaixo possuem tutoriais para a maior parte dos sistemas operacionais.
 
 * Python [[Clique aqui](https://realpython.com/installing-python/)]
-
 * Pip [[Clique aqui](https://pip.pypa.io/en/stable/installing/)]
-
 
 ### Instalando o MkDocs
 
-Vale ressaltar que em alguns sistemas operacionais é possível instalar o MkDocs diretamente pelo *package manager*. Nesse tutorial vamos utilizar o `pip`, 
+Vale ressaltar que em alguns sistemas operacionais é possível instalar o MkDocs diretamente pelo *package manager*. Nesse tutorial vamos utilizar o `pip`.
 
-```properties
+```bash
 pip install mkdocs
 ```
 
@@ -58,45 +57,77 @@ A seguir, verifique se o pacote foi instalado corretamente.
 $ mkdocs --version
 mkdocs, version 0.15.3
 ```
+Clone e entre no repositório do projeto.
+
+```bash
+git clone https://github.com/arma29/online-book.git
+cd online-book
+```
+
+Instale as dependências do projeto.
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Execução
 
-O MkDocs vem com um *dev-server* nativo, que permite visualizar a documentação a medida que você vai trabalhando nela. Uma vez estando no mesmo diretório do arquivo `mkdocs.yml`, inicie o server executando o seguinte comando:
+O MkDocs vem com um ambiente de desenvolvimento embutido, que permite visualizar a documentação a medida que você vai trabalhando nela. Inicie o servidor executando o comando abaixo.
 
-```console
-$ mkdocs serve
-INFO    -  Building documentation...
-INFO    -  Cleaning site directory
-[I 160402 15:50:43 server:271] Serving on http://127.0.0.1:8000
-[I 160402 15:50:43 handlers:58] Start watching changes
-[I 160402 15:50:43 handlers:60] Start detecting changes
+```bash
+mkdocs serve
 ```
 
-Basta abrir a url `http://127.0.0.1:8000/` em seu browser.
+Agora, basta abrir a url http://127.0.0.1:8000 em seu *browser*.
 
 ## Desenvolvimento
 
 ### Menu
 
-A estrutura de menus pode ser configurada a partir do arquivo `mkdocs.yml`.
+A estrutura de menus pode ser configurada a partir do arquivo [mkdocs.yml](mkdocs.yml).
 
-```YAML
-nav:
-    - Home: 'index.md'
-    - 'User Guide':
-        - 'Writing your docs': 'writing-your-docs.md'
-        - 'Styling your docs': 'styling-your-docs.md'
-    - About:
-        - 'License': 'license.md'
-        - 'Release Notes': 'release-notes.md'
+```yaml
+site_name: Online Book
+nav: 
+  - Home: index.md
+  - Notebook: notebooks/hello-world.ipynb 
+  - Binder: https://mybinder.org/v2/gh/binder-examples/demo-julia/master?filepath=demo.ipynb
+  - Aulas: 
+    - Selenium: aula.md
+    - Randoop: aula.md
+...
 ```
 
-Com a configuração acima, nós temos 3 itens no *top level*: `Home`, `User Guide` e `About`. `Home` é um link para a homepage do site. Sob a seção `User Guide`, duas páginas são listadas. Por fim, na seção `About` mais duas páginas são listadas.
+Com a configuração acima, nós temos 4 itens no *top level*: `Home`, `Notebook`, `Binder` e `Aulas`. `Home` é um link para a homepage do site. Sob a seção `Aulas`, duas páginas são listadas.
+
+![](https://i.imgur.com/5PoZFCD.png)
+
+**Observação**: Os arquivos são lidos a partir do diretório [docs](docs/) na raiz do projeto, ou seja, para o arquivo `docs/index.md` basta especificar `index.md`.
 
 ### Adicionando conteúdo
 
-Para adicionar um vídeo do youtube, basta copiar o código do vídeo, fornecido pelo próprio youtube e adicionar em uma página .md. As dimensões podem ser configuaradas facilmente.
+O MkDocs aceita os formatos Markdown (*.md*) e Jupyter Notebook (.*ipynb*). Os arquivos de descrição estão dispostos no diretório `docs/` e os notebooks dentro do subdiretório `docs/notebooks`. Com o uso de Markdown é possível adicionar videos, *twetts*, postagens do Medium, entre outros conteúdos.
 
-```markdown
-[!embed](https://www.youtube.com/watch?v=xIGre_E2_og =100x20)
+![](https://i.imgur.com/3MRUSMY.png =500x)
+
+
+## Deploy
+
+Para realizar o *deploy* para o GitHub, basta executar o comando abaixo.
+
+```bash
+mkdocs gh-deploy
 ```
+
+Se tudo der certo, a saída deve ser similar a essa.
+
+```console
+$ mkdocs gh-deploy
+INFO    -  Cleaning site directory 
+INFO    -  Building documentation to directory: /home/fmelo/Projects/university/online-book/site 
+INFO    -  Documentation built in 0.43 seconds 
+INFO    -  Copying '/home/fmelo/Projects/university/online-book/site' to 'gh-pages' branch and pushing to GitHub. 
+INFO    -  Your documentation should shortly be available at: https://arma29.github.io/online-book/ 
+```
+
+Por trás dos panos, o conteúdo estático do site é gerado para o diretório site/, em seguida é criada uma branch chamada gh-pages, contendo o diretório recém criado. Basta acessar o site https://arma29.github.io/online-book/.
