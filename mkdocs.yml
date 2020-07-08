@@ -1,9 +1,24 @@
 site_name: Online Book
 nav: 
   - Home: index.md
-  - Aulas: classes.md
-  - Notebooks: notebooks.md
-  - About: about.md
+  - Notebook: notebooks/hello-world.ipynb 
+  - Binder: https://mybinder.org/v2/gh/binder-examples/demo-julia/master?filepath=demo.ipynb
+  - Aulas: 
+    - Selenium: 
+      - Ruby: aula.md
+      - Python: aula.md
+    - Randoop: aula.md
+  
 theme:
   name: null
   custom_dir: 'cinder'
+
+plugins:
+  - mkdocs-jupyter:
+      execute: True
+      include_source: True
+  - search:
+      min_search_length: 2
+
+markdown_extensions:
+  - codehilite
