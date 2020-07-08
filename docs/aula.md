@@ -1,5 +1,3 @@
-
-
 # Et circuitu enim at hinc discrimine quid
 
 ## Corpus prohibebant pervia
