@@ -108,7 +108,7 @@ Com a configuração acima, nós temos 4 itens no *top level*: `Home`, `Notebook
 
 O MkDocs aceita os formatos Markdown (*.md*) e Jupyter Notebook (.*ipynb*). Os arquivos de descrição estão dispostos no diretório `docs/` e os notebooks dentro do subdiretório `docs/notebooks`. Com o uso de Markdown é possível adicionar videos, *twetts*, postagens do Medium, entre outros conteúdos.
 
-![](https://i.imgur.com/3MRUSMY.png =500x)
+![](https://i.imgur.com/3MRUSMY.png)
 
 
 ## Deploy
